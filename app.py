@@ -2,7 +2,7 @@ import random
 import os,sys,time
 from setuplogic import setupcheck
 
-setupcheck()
+#setupcheck()
 
 def create_recipt_logic():
     
@@ -73,7 +73,7 @@ def create_recipt_logic():
     total_mrp = input("Total: ")
     with open(f'data/{unique_id_charset}-data.txt','r+') as f:
            old = f.read()
-           f.write('Total MRP - ','',str(total_mrp))
+           f.write('Total MRP - '+''+str(total_mrp))
     #Allowance For Printing Recipt
     ask_print = input("Print Recipt (Y/N): ")
     if ask_print == 'y'or'Y'or'Yes'or'yes':
@@ -105,6 +105,20 @@ def create_recipt_logic():
            print('Total - '    ,       str(total_mrp))
     else:
            quit()
+
+def read_data_logic():
+       take_charset = input('10 Digit Charset Authentication: ')
+       with open(f'data/{take_charset}-data.txt','r') as f:
+              read_data = f.read()
+              time.sleep(2)
+              print(read_data)
+              exit()
+
+def delete_data_logic():
+       take_charset = input('10 Digit Charset Authentication: ')
+       with open(f'data/{take_charset}-data.txt','w') as f:
+              f.close()
+              os.remove(f.name)
 print("Welcome, To BAFS System")
 time.sleep(2)
 
@@ -118,5 +132,8 @@ greet = input("Select B/w ?: ")
 if greet == "a":
     create_recipt_logic()
 
-#if greet == "b":
-   # read_data_logic()
+if greet == "b":
+    read_data_logic()
+
+if greet == 'c':
+       delete_data_logic()
